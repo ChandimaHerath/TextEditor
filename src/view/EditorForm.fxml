@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="591.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditorFormController">
+   <children>
+      <MenuBar prefHeight="29.0" prefWidth="830.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#mnuitemNew_OnAction" text="New" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemOpen_OnAction" text="Open" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemSaveAs_OnAction" text="Save As" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemSave_OnAction" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemExit_OnAction" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemSelectAll_OnAction" text="Select All" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemCopy_OnAction" text="Copy" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemCut_OnAction" text="Cut" />
+           <MenuItem mnemonicParsing="false" onAction="#mnuItemPaste_OnAction" text="Paste" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemFind_OnAction" text="Find" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemReplace_OnAction" text="Replace" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#mnuitemAbout_OnAction" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TextArea fx:id="txtEditor" layoutX="3.0" layoutY="63.0" prefHeight="504.0" prefWidth="815.0" text="My name Is Tarzen I am jungle " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="48.0" />
+      <AnchorPane fx:id="pneSearch" layoutX="565.0" layoutY="4.0" prefHeight="41.0" prefWidth="256.0" style="-fx-background-color: gray;">
+         <children>
+            <TextField fx:id="txtSearch" layoutX="6.0" layoutY="7.0" />
+            <Button fx:id="btnNext" layoutX="180.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnNext_OnAction" prefHeight="26.0" prefWidth="20.0" text="↓" />
+            <Button fx:id="btnPrevious" layoutX="222.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnPrevious_OnAction" prefHeight="26.0" prefWidth="29.0" text="↑" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pneReplace" layoutX="565.0" layoutY="45.0" prefHeight="41.0" prefWidth="256.0" style="-fx-background-color: gray;">
+         <children>
+            <TextField fx:id="txtSearch1" layoutX="5.0" layoutY="7.0" />
+            <Button fx:id="btnReplace" layoutX="180.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="20.0" text="R" />
+            <Button fx:id="btnReplaceAll" layoutX="210.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" text="RA" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

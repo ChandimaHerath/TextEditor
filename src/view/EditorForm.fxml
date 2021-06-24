@@ -42,15 +42,15 @@
       <AnchorPane fx:id="pneSearch" layoutX="565.0" layoutY="4.0" prefHeight="41.0" prefWidth="256.0" style="-fx-background-color: gray;">
          <children>
             <TextField fx:id="txtSearch" layoutX="6.0" layoutY="7.0" />
-            <Button fx:id="btnNext" layoutX="180.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnNext_OnAction" prefHeight="26.0" prefWidth="20.0" text="↓" />
-            <Button fx:id="btnPrevious" layoutX="222.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnPrevious_OnAction" prefHeight="26.0" prefWidth="29.0" text="↑" />
+            <Button fx:id="btnNext" layoutX="181.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnNext_OnAction" prefHeight="26.0" prefWidth="20.0" text="↓" />
+            <Button fx:id="btnPrevious" layoutX="221.0" layoutY="7.0" mnemonicParsing="false" onAction="#btnPrevious_OnAction" prefHeight="26.0" prefWidth="29.0" text="↑" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="pneReplace" layoutX="565.0" layoutY="45.0" prefHeight="41.0" prefWidth="256.0" style="-fx-background-color: gray;">
          <children>
-            <TextField fx:id="txtSearch1" layoutX="5.0" layoutY="7.0" />
-            <Button fx:id="btnReplace" layoutX="180.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="20.0" text="R" />
-            <Button fx:id="btnReplaceAll" layoutX="210.0" layoutY="6.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" text="RA" />
+            <TextField fx:id="txtReplace" layoutX="5.0" layoutY="7.0" />
+            <Button fx:id="btnReplace" layoutX="180.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnReplace_OnAction" prefHeight="26.0" prefWidth="20.0" text="R" />
+            <Button fx:id="btnReplaceAll" layoutX="210.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnReplaceAll_OnAction" prefHeight="26.0" prefWidth="41.0" text="RA" />
          </children>
       </AnchorPane>
    </children>

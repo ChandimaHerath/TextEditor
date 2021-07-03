@@ -6,8 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -60,7 +62,31 @@ public class EditorFormController {
     public void mnuitemSaveAs_OnAction(ActionEvent actionEvent) {
     }
 
-    public void mnuitemOpen_OnAction(ActionEvent actionEvent) {
+    public void mnuitemOpen_OnAction(ActionEvent actionEvent) throws FileNotFoundException {
+        FileChooser filechooser = new FileChooser();
+        filechooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Text Files","*.txt","*.html"));
+        filechooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("All Files","*.*"));
+        File file = filechooser.showOpenDialog(txtEditor.getScene().getWindow());
+
+        if(file == null) return;
+
+        txtEditor.clear();
+
+        try (FileReader fileReader = new FileReader(file); BufferedReader bufferedReader = new BufferedReader(fileReader);)
+        {
+
+            String line = null;
+            while((line = bufferedReader.readLine())!=null){
+            txtEditor.appendText(line+ '\n');
+
+            }
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void mnuitemSave_OnAction(ActionEvent actionEvent) {

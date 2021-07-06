@@ -16,8 +16,10 @@
             <items>
               <MenuItem mnemonicParsing="false" onAction="#mnuitemNew_OnAction" text="New" />
                   <MenuItem mnemonicParsing="false" onAction="#mnuitemOpen_OnAction" text="Open" />
-                  <MenuItem mnemonicParsing="false" onAction="#mnuitemSaveAs_OnAction" text="Save As" />
                   <MenuItem mnemonicParsing="false" onAction="#mnuitemSave_OnAction" text="Save" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemSaveAs_OnAction" text="Save As" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemPageSetup_OnAction" text="PageSetup" />
+                  <MenuItem mnemonicParsing="false" onAction="#mnuitemPrint_OnAction" text="Print" />
                   <MenuItem mnemonicParsing="false" onAction="#mnuitemExit_OnAction" text="Exit" />
             </items>
           </Menu>

@@ -1,7 +1,9 @@
 package controller;
 
+import com.sun.javafx.print.PrinterJobImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.print.PrinterJob;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,11 +28,13 @@ public class EditorFormController {
     public AnchorPane pneReplace;
     private final List<Index> searchIndexes = new ArrayList<>();
     private int findoffset = -1;
+    private PrinterJob printerJob;
 
 
     public void initialize() {
         pneSearch.setVisible(false);
         pneReplace.setVisible(false);
+        this.printerJob = PrinterJob.createPrinterJob();
 
         ChangeListener textListener = (ChangeListener<String>) (observable, oldValue, newValue) -> {
             search(newValue);
@@ -59,7 +63,21 @@ public class EditorFormController {
         txtEditor.requestFocus();
     }
 
-    public void mnuitemSaveAs_OnAction(ActionEvent actionEvent) {
+    public void mnuitemSaveAs_OnAction(ActionEvent actionEvent)  {
+
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(txtEditor.getScene().getWindow());
+
+        if (file == null) return;
+
+        try (FileWriter fw = new FileWriter(file); BufferedWriter br = new BufferedWriter(fw)){
+            br.write(txtEditor.getText());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void mnuitemOpen_OnAction(ActionEvent actionEvent) throws FileNotFoundException {
@@ -100,6 +118,7 @@ public class EditorFormController {
 
 
     public void mnuItemPaste_OnAction(ActionEvent actionEvent) {
+
         txtEditor.paste();
     }
 
@@ -178,6 +197,14 @@ public class EditorFormController {
             search(txtSearch.getText());
         }
 
+    }
+
+    public void mnuitemPrint_OnAction(ActionEvent actionEvent) {
+    }
+
+    public void mnuitemPageSetup_OnAction(ActionEvent actionEvent) {
+
+        printerJob.showPageSetupDialog(txtEditor.getScene().getWindow());
     }
 }
 

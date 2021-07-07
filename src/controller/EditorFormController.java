@@ -212,10 +212,14 @@ public class EditorFormController {
     }
 
     public void mnuitemPrint_OnAction(ActionEvent actionEvent) {
+
+        printerJob.showPrintDialog(txtEditor.getScene().getWindow());
+        printerJob.printPage(txtEditor.lookup("Text"));
     }
 
     public void mnuitemPageSetup_OnAction(ActionEvent actionEvent) {
 
+        printerJob.showPageSetupDialog(txtEditor.getScene().getWindow());
 
     }
 }

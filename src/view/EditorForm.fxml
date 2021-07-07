@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="591.0" prefWidth="830.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditorFormController">
@@ -39,6 +41,12 @@
             </items>
           </Menu>
         </menus>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+         <effect>
+            <Glow level="0.2" />
+         </effect>
       </MenuBar>
       <TextArea fx:id="txtEditor" layoutX="3.0" layoutY="63.0" prefHeight="504.0" prefWidth="815.0" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="48.0" />
       <AnchorPane fx:id="pneSearch" layoutX="565.0" layoutY="4.0" prefHeight="41.0" prefWidth="256.0" style="-fx-background-color: gray;">

@@ -3,7 +3,10 @@ package controller;
 import com.sun.javafx.print.PrinterJobImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -146,6 +149,19 @@ public class EditorFormController {
     }
 
     public void mnuitemAbout_OnAction(ActionEvent actionEvent) {
+
+        Stage primaryStage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/view/AboutView.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        primaryStage.setTitle("About");
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 
     public void mnuitemSelectAll_OnAction(ActionEvent actionEvent) {

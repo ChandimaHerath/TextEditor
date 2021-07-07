@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.AboutViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="426.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutViewController">
+   <children>
+      <Button layoutX="195.0" layoutY="375.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="OK" />
+      <ImageView fitHeight="134.0" fitWidth="171.0" layoutX="160.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Assests/aboutImage.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="185.0" layoutY="158.0" prefHeight="26.0" prefWidth="135.0" text="Text Editor">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="72.0" layoutY="204.0" prefHeight="26.0" prefWidth="357.0" text="Text Editor (V.1.0) Developed by Chandima Herath. " />
+      <Label layoutX="72.0" layoutY="234.0" prefHeight="26.0" prefWidth="357.0" text="Licenced Under MIT Licence." />
+      <Label layoutX="72.0" layoutY="265.0" prefHeight="26.0" prefWidth="357.0" text="Modifing and Redestribution is allowed by the creator." />
+      <Label layoutX="72.0" layoutY="297.0" prefHeight="26.0" prefWidth="357.0" text="For more details, Please Refer the Readme file." />
+      <Label layoutX="32.0" layoutY="334.0" prefHeight="17.0" prefWidth="435.0" text="Copyright ©copy 2021 - Present Chandima Herath. All rights reserved." textFill="#4413cd">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>

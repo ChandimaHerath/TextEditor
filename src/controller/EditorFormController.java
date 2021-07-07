@@ -4,6 +4,7 @@ import com.sun.javafx.print.PrinterJobImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.print.PrinterJob;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -74,9 +75,21 @@ public class EditorFormController {
             br.write(txtEditor.getText());
 
         } catch (IOException e) {
-            e.printStackTrace();
+           new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+
+    }
+
+    public void mnuitemSave_OnAction(ActionEvent actionEvent) {
+//         File saveFile = new File(System.getProperty("user.dir"));
+//
+//         try(FileWriter fileWriter = new FileWriter(saveFile);BufferedWriter br = new BufferedWriter(fileWriter)){
+//           br.write(txtEditor.getText());
+//         } catch (IOException e)
+//         {
+//             e.printStackTrace();
+//         }
 
     }
 
@@ -107,8 +120,7 @@ public class EditorFormController {
 
     }
 
-    public void mnuitemSave_OnAction(ActionEvent actionEvent) {
-    }
+
 
     public void mnuitemExit_OnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) txtEditor.getScene().getWindow();
@@ -204,7 +216,7 @@ public class EditorFormController {
 
     public void mnuitemPageSetup_OnAction(ActionEvent actionEvent) {
 
-        printerJob.showPageSetupDialog(txtEditor.getScene().getWindow());
+
     }
 }
 

@@ -20,24 +20,24 @@
 ---
        (Main View)
 
- ![img.png](img.png)
+ ![img.png](src/image/img.png)
 
 ---
       (Search View)
 
-![img_1.png](img_1.png)
+![img_1.png](src/image/img_1.png)
  
 ---
 ---
     (Replace View)
-![img_2.png](img_2.png)
+![img_2.png](src/image/img_2.png)
 
 
 ---
 
     (About)
 
-![img_3.png](img_3.png)
+![img_3.png](src/image/img_3.png)
 
 ---
 

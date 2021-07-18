@@ -10,7 +10,7 @@
 <AnchorPane fx:id="pneAbout" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="426.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutViewController">
    <children>
       <Button fx:id="btnOK" layoutX="195.0" layoutY="375.0" mnemonicParsing="false" onAction="#OnClick_btnOK" prefHeight="26.0" prefWidth="101.0" text="OK" />
-      <ImageView fitHeight="134.0" fitWidth="171.0" layoutX="160.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="134.0" fitWidth="171.0" layoutX="160.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="282.75" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="15.0">
          <image>
             <Image url="@../Assests/aboutImage.png" />
          </image>

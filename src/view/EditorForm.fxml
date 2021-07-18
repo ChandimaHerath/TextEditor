@@ -48,7 +48,7 @@
             <Glow level="0.2" />
          </effect>
       </MenuBar>
-      <TextArea fx:id="txtEditor" layoutX="3.0" layoutY="63.0" prefHeight="504.0" prefWidth="815.0" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="48.0" />
+      <TextArea fx:id="txtEditor" layoutX="3.0" layoutY="63.0" onDragDropped="#txtEditorDragDropped_OnAction" onDragOver="#txtEditorDragOver_OnAction" prefHeight="504.0" prefWidth="815.0" text=" " AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="48.0" />
       <AnchorPane fx:id="pneSearch" layoutX="565.0" layoutY="4.0" prefHeight="41.0" prefWidth="256.0" style="-fx-background-color: gray;">
          <children>
             <TextField fx:id="txtSearch" layoutX="6.0" layoutY="7.0" />

@@ -8,6 +8,8 @@ import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -143,8 +145,6 @@ public class EditorFormController {
             String line = null;
             while((line = bufferedReader.readLine())!=null){
             txtEditor.appendText(line+ '\n');
-            //clear the properties file
-            //add new pointer of the opend file to the properties file
 
             }
 
@@ -161,7 +161,7 @@ public class EditorFormController {
     public void mnuitemExit_OnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) txtEditor.getScene().getWindow();
         stage.close();
-        //clear the properties file
+
 
     }
 
@@ -287,7 +287,33 @@ public class EditorFormController {
             new Alert(Alert.AlertType.ERROR, "Can't save the file", ButtonType.CLOSE).show();
         }
     }
+
+    public void txtEditorDragDropped_OnAction(DragEvent dragEvent) {
+        if (dragEvent.getDragboard().hasFiles()) {
+            File file = dragEvent.getDragboard().getFiles().get(0);
+            txtEditor.clear();
+
+            try (FileReader fileReader = new FileReader(file); BufferedReader bufferedReader = new BufferedReader(fileReader);)
+            {
+
+                String line = null;
+                while((line = bufferedReader.readLine())!=null){
+                    txtEditor.appendText(line+ '\n');
+                }
+
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+    public void txtEditorDragOver_OnAction(DragEvent dragEvent) {
+        if (dragEvent.getDragboard().hasFiles()) {
+            dragEvent.acceptTransferModes(TransferMode.ANY);
+        }
+    }
+}
 
 
 

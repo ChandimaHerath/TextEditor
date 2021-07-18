@@ -5,11 +5,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Properties;
 
 public class AppInitializer extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 
     @Override

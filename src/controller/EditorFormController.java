@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -33,9 +34,12 @@ public class EditorFormController {
     private final List<Index> searchIndexes = new ArrayList<>();
     private int findoffset = -1;
     private PrinterJob printerJob;
+    Properties prop = new Properties();
+
 
 
     public void initialize() {
+        //clear the properties file
         pneSearch.setVisible(false);
         pneReplace.setVisible(false);
         this.printerJob = PrinterJob.createPrinterJob();
@@ -45,6 +49,9 @@ public class EditorFormController {
         };
         txtSearch.textProperty().addListener(textListener);
     }
+
+
+
 
     private void search(String query){
         try {
@@ -71,6 +78,10 @@ public class EditorFormController {
 
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showSaveDialog(txtEditor.getScene().getWindow());
+        File appSettings = new File(System.getProperty("user.dir") ,"TextEditor.properties" );
+        prop.setProperty("Saved File", file.toString());
+
+        System.out.println(prop.getProperty("Saved File"));
 
         if (file == null) return;
 
@@ -81,18 +92,31 @@ public class EditorFormController {
            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
 
+        try(FileOutputStream outputStream = new FileOutputStream(appSettings);
+            BufferedOutputStream bos = new BufferedOutputStream(outputStream)){
+
+            prop.store(bos,"Property Updated!");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
     public void mnuitemSave_OnAction(ActionEvent actionEvent) {
-//         File saveFile = new File(System.getProperty("user.dir"));
-//
-//         try(FileWriter fileWriter = new FileWriter(saveFile);BufferedWriter br = new BufferedWriter(fileWriter)){
-//           br.write(txtEditor.getText());
-//         } catch (IOException e)
-//         {
-//             e.printStackTrace();
-//         }
+
+
+
+       // System.out.println(prop.getProperty("Saved File"));
+        File saveFile = new File(prop.getProperty("Saved File"));
+        try(FileWriter fileWriter = new FileWriter(saveFile);BufferedWriter br = new BufferedWriter(fileWriter)){
+           br.write(txtEditor.getText());
+         } catch (IOException e)
+         {
+             e.printStackTrace();
+         }
 
     }
 
@@ -112,6 +136,8 @@ public class EditorFormController {
             String line = null;
             while((line = bufferedReader.readLine())!=null){
             txtEditor.appendText(line+ '\n');
+            //clear the properties file
+            //add new pointer of the opend file to the properties file
 
             }
 
@@ -128,6 +154,7 @@ public class EditorFormController {
     public void mnuitemExit_OnAction(ActionEvent actionEvent) {
         Stage stage = (Stage) txtEditor.getScene().getWindow();
         stage.close();
+        //clear the properties file
 
     }
 

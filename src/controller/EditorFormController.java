@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -35,7 +32,8 @@ public class EditorFormController {
     private final List<Index> searchIndexes = new ArrayList<>();
     private int findoffset = -1;
     private PrinterJob printerJob;
-    Properties prop = new Properties();
+    String text;
+
 
 
 
@@ -44,6 +42,8 @@ public class EditorFormController {
         pneSearch.setVisible(false);
         pneReplace.setVisible(false);
         this.printerJob = PrinterJob.createPrinterJob();
+        this.text = txtEditor.getText();
+
 
         ChangeListener textListener = (ChangeListener<String>) (observable, oldValue, newValue) -> {
             search(newValue);
@@ -80,47 +80,50 @@ public class EditorFormController {
 
     public void mnuitemSaveAs_OnAction(ActionEvent actionEvent)  {
 
-        FileChooser fileChooser = new FileChooser();
-        File file = fileChooser.showSaveDialog(txtEditor.getScene().getWindow());
-        File appSettings = new File(System.getProperty("user.dir") ,"TextEditor.properties" );
-        prop.setProperty("Saved File", file.toString());
+          saveFile();
 
-        System.out.println(prop.getProperty("Saved File"));
-
-        if (file == null) return;
-
-        try (FileWriter fw = new FileWriter(file); BufferedWriter br = new BufferedWriter(fw)){
-            br.write(txtEditor.getText());
-
-        } catch (IOException e) {
-           new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-        }
-
-        try(FileOutputStream outputStream = new FileOutputStream(appSettings);
-            BufferedOutputStream bos = new BufferedOutputStream(outputStream)){
-
-            prop.store(bos,"Property Updated!");
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+//        FileChooser fileChooser = new FileChooser();
+//        File file = fileChooser.showSaveDialog(txtEditor.getScene().getWindow());
+//        File appSettings = new File(System.getProperty("user.dir") ,"TextEditor.properties" );
+//        prop.setProperty("Saved File", file.toString());
+//
+//        System.out.println(prop.getProperty("Saved File"));
+//
+//        if (file == null) return;
+//
+//        try (FileWriter fw = new FileWriter(file); BufferedWriter br = new BufferedWriter(fw)){
+//            br.write(txtEditor.getText());
+//
+//        } catch (IOException e) {
+//           new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+//        }
+//
+//        try(FileOutputStream outputStream = new FileOutputStream(appSettings);
+//            BufferedOutputStream bos = new BufferedOutputStream(outputStream)){
+//
+//            prop.store(bos,"Property Updated!");
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
     public void mnuitemSave_OnAction(ActionEvent actionEvent) {
 
+        if(!text.equals(txtEditor.getText())){
+            text = txtEditor.getText();
+            saveFile();
+        }
 
-
-       // System.out.println(prop.getProperty("Saved File"));
-        File saveFile = new File(prop.getProperty("Saved File"));
-        try(FileWriter fileWriter = new FileWriter(saveFile);BufferedWriter br = new BufferedWriter(fileWriter)){
-           br.write(txtEditor.getText());
-         } catch (IOException e)
-         {
-             e.printStackTrace();
-         }
+        // System.out.println(prop.getProperty("Saved File"));
+//        File saveFile = new File(prop.getProperty("Saved File"));
+//        try(FileWriter fileWriter = new FileWriter(saveFile);BufferedWriter br = new BufferedWriter(fileWriter)){
+//           br.write(txtEditor.getText());
+//         } catch (IOException e)
+//         {
+//             e.printStackTrace();
+//         }
 
     }
 
@@ -269,7 +272,23 @@ public class EditorFormController {
         printerJob.showPageSetupDialog(txtEditor.getScene().getWindow());
 
     }
-}
+
+    private void saveFile(){
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save File");
+        File file = fileChooser.showSaveDialog(txtEditor.getScene().getWindow());
+
+        if (file == null) return;
+
+        try (FileWriter fileWriter = new FileWriter(file);
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write(txtEditor.getText());
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Can't save the file", ButtonType.CLOSE).show();
+        }
+    }
+    }
+
 
 
 class Index {

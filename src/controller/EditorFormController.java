@@ -58,7 +58,6 @@ public class EditorFormController {
 
 
 
-
     private void search(String query){
         try {
             Pattern regExp = Pattern.compile(query);
